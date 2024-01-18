@@ -9,7 +9,7 @@ class DoublyLinkedList:
     def __init__(self, value):
         new_node = Node(value)
         self.head = new_node
-        self.tail = new_node
+        self.prev = new_node
         self.length = 1
 
     def append(self, value):
@@ -18,22 +18,26 @@ class DoublyLinkedList:
             self.head = new_node
             self.tail = new_node
             self.length = 1
-
         else:
             new_node = Node(value)
-            new_node.prev = self.tail
             self.tail.next = new_node
+            new_node.prev = self.tail
             self.tail = new_node
             self.length += 1
 
-    def print(self):
-        temp = self.head
-        while temp is not None:
-            print(temp.value)
-            temp = temp.next
-
-
-new_list = DoublyLinkedList(4)
-new_list.append(5)
-
-new_list.print()
+    def pop_first(self):
+        if self.length == 0:
+            return None
+        elif self.length == 1:
+            temp = self.head
+            self.head = None
+            self.tail = None
+            self.length -= 1
+            return temp
+        else:
+            temp = self.head
+            self.head = self.head.next
+            self.head.prev = None
+            temp.next = None
+            self.length -= 1
+            return temp

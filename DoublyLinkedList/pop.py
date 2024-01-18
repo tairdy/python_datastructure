@@ -26,14 +26,41 @@ class DoublyLinkedList:
             self.tail = new_node
             self.length += 1
 
-    def print(self):
+    def pop(self):
+        if self.length == 0:
+            return None
+
+        elif self.length == 1:
+            temp = self.head
+            self.head = None
+            self.tail = None
+            self.length = 0
+            return temp
+
+        else:
+            temp = self.tail
+            self.tail = self.tail.prev
+            self.tail.next = None
+            temp.prev = None
+            self.length -= 1
+            return temp
+
+    def print_list(self):
         temp = self.head
         while temp is not None:
             print(temp.value)
             temp = temp.next
 
 
-new_list = DoublyLinkedList(4)
-new_list.append(5)
+my_doublylinkedlist = DoublyLinkedList(3)
+my_doublylinkedlist.append(4)
 
-new_list.print()
+my_doublylinkedlist.print_list()
+
+
+print("popping one node from the end")
+my_doublylinkedlist.pop()
+my_doublylinkedlist.print_list()
+
+print("popping another node, this time only one node")
+my_doublylinkedlist.pop()
