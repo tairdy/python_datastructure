@@ -23,6 +23,7 @@ class MyQueue:
             return None
         else:
             return_value = self.stack1.pop()
+            return return_value
 
     def peek(self):
         return self.stack1[-1]
