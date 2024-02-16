@@ -1,5 +1,5 @@
 
-class HashTable:
+class hashtable:
     def __init__(self, size=7):
         self.data_map = [None]*size
 
@@ -21,7 +21,7 @@ class HashTable:
         self.data_map[index].append([key, value])
 
 
-my_hash_table = HashTable()
+my_hash_table = hashtable()
 my_hash_table.set_item('bolts', 1400)
 my_hash_table.set_item('washers', 50)
 my_hash_table.set_item('lumber', 70)
