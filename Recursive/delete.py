@@ -15,7 +15,7 @@ def r_insert(self, value):
 
 
 def __delete_node(self, current_node, value):
-    if current_node.value == None:
+    if current_node == None:
         return None
 
     if value < current_node.value:
@@ -38,7 +38,7 @@ def __delete_node(self, current_node, value):
 
 
 def delete_node(self, value):
-    self.__delete_node(self.root, value)
+    self.root = self.__delete_node(self.root, value)
 
 
 def min_value(self, current_node):
